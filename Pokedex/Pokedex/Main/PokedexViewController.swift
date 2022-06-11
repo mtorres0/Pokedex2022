@@ -22,6 +22,7 @@ class PokedexViewController: UIViewController, PokedexViewProtocol {
         super.viewDidLoad()
         title = "Pokedex"
         setupCollectionView()
+        setCollectionLayout(pokemonCollectionView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +34,14 @@ class PokedexViewController: UIViewController, PokedexViewProtocol {
         pokemonCollectionView.dataSource = self
         pokemonCollectionView.delegate = self
         pokemonCollectionView.register(UINib(nibName: "PokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCollectionViewCell")
+        pokemonCollectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    
+    public func setCollectionLayout(_ collectionView: UICollectionView) {
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout ?? UICollectionViewFlowLayout()
+        let width = UIScreen.main.bounds.width/2 - 16
+        layout.itemSize = CGSize(width: width , height: width)
+        collectionView.reloadData()
     }
     
     func showPokemons() {
