@@ -15,6 +15,9 @@ class PokedexViewController: UIViewController, PokedexViewProtocol {
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     var presenter: PokedexPresenterProtocol?
 
+    var totalPage = 1
+    var currentPage = 0
+    
 	override func viewDidLoad() {
         super.viewDidLoad()
         title = "Pokedex"
@@ -28,16 +31,19 @@ class PokedexViewController: UIViewController, PokedexViewProtocol {
     
     func setupCollectionView() {
         pokemonCollectionView.dataSource = self
+        pokemonCollectionView.delegate = self
         pokemonCollectionView.register(UINib(nibName: "PokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCollectionViewCell")
     }
     
     func showPokemons() {
         pokemonCollectionView.reloadData()
+        let pokemonCount = presenter?.pokemons.count ?? 0
+        totalPage = pokemonCount / 20
     }
 
 }
 
-extension PokedexViewController: UICollectionViewDataSource {
+extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         presenter?.pokemons.count ?? 0
     }
@@ -49,5 +55,13 @@ extension PokedexViewController: UICollectionViewDataSource {
         cell.pokemonNameLabel.text = pokemon.name
         cell.pokemonImageView.loadImage(from: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(pokemonNumber).png"))
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let pokemonCount = presenter?.pokemons.count else { return }
+        if indexPath.row == (pokemonCount - 1) && currentPage < totalPage {
+            currentPage += 1
+            presenter?.getPokemons()
+        }
     }
 }

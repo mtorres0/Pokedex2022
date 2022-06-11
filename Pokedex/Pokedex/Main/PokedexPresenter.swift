@@ -28,7 +28,7 @@ class PokedexPresenter: PokedexPresenterProtocol {
     }
     
     func showPokemons(pokemons: [Pokemon]) {
-        self.pokemons = pokemons
+        self.pokemons.append(contentsOf: pokemons)
         view?.showPokemons()
     }
 
