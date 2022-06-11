@@ -11,7 +11,9 @@
 import UIKit
 
 class PokedexPresenter: PokedexPresenterProtocol {
+    
     var pokemons: [Pokemon] = []
+    var pokemonsFiltered: [Pokemon] = []
 
     weak private var view: PokedexViewProtocol?
     var interactor: PokedexInteractorProtocol?
@@ -29,6 +31,19 @@ class PokedexPresenter: PokedexPresenterProtocol {
     
     func showPokemons(pokemons: [Pokemon]) {
         self.pokemons.append(contentsOf: pokemons)
+        self.pokemonsFiltered.append(contentsOf: self.pokemons)
+        view?.showPokemons()
+    }
+    
+    func searchPokemon(text: String) {
+        if text.isEmpty {
+            self.pokemonsFiltered.removeAll()
+            self.pokemonsFiltered.append(contentsOf: self.pokemons)
+        } else {
+            self.pokemonsFiltered = self.pokemons.filter({ pokemon in
+                pokemon.name.lowercased().contains(text.lowercased())
+            })
+        }
         view?.showPokemons()
     }
 

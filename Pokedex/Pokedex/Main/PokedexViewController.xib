@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PokedexViewController" customModule="Pokedex" customModuleProvider="target">
             <connections>
                 <outlet property="pokemonCollectionView" destination="cI7-Ou-nQG" id="xm2-Oi-vJE"/>
+                <outlet property="searchBar" destination="lk4-ge-WFr" id="01g-76-nCn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,10 +20,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="TqS-sC-nj0">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="51" width="375" height="616"/>
                 </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cI7-Ou-nQG">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="51" width="375" height="616"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dBY-zQ-ASO">
                         <size key="itemSize" width="128" height="128"/>
@@ -31,20 +32,30 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="lk4-ge-WFr">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="51" id="6xL-oz-nrJ"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </subviews>
             <viewLayoutGuide key="safeArea" id="psI-wk-n7o"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="TqS-sC-nj0" firstAttribute="top" secondItem="lk4-ge-WFr" secondAttribute="bottom" id="5oa-W5-Q6o"/>
                 <constraint firstItem="cI7-Ou-nQG" firstAttribute="leading" secondItem="psI-wk-n7o" secondAttribute="leading" id="CLo-7R-3rp"/>
+                <constraint firstItem="lk4-ge-WFr" firstAttribute="leading" secondItem="psI-wk-n7o" secondAttribute="leading" id="CXg-zj-BBo"/>
                 <constraint firstItem="psI-wk-n7o" firstAttribute="trailing" secondItem="TqS-sC-nj0" secondAttribute="trailing" id="EKK-LN-3uO"/>
-                <constraint firstItem="TqS-sC-nj0" firstAttribute="top" secondItem="psI-wk-n7o" secondAttribute="top" id="Ke0-um-aTK"/>
+                <constraint firstItem="lk4-ge-WFr" firstAttribute="trailing" secondItem="psI-wk-n7o" secondAttribute="trailing" id="P2c-ic-NwR"/>
+                <constraint firstItem="cI7-Ou-nQG" firstAttribute="top" secondItem="lk4-ge-WFr" secondAttribute="bottom" id="Z0c-Xc-Bjr"/>
                 <constraint firstItem="TqS-sC-nj0" firstAttribute="leading" secondItem="psI-wk-n7o" secondAttribute="leading" id="gcA-fF-vLW"/>
                 <constraint firstItem="psI-wk-n7o" firstAttribute="bottom" secondItem="cI7-Ou-nQG" secondAttribute="bottom" id="gq2-py-q7h"/>
                 <constraint firstItem="psI-wk-n7o" firstAttribute="trailing" secondItem="cI7-Ou-nQG" secondAttribute="trailing" id="hhD-Bv-eH7"/>
-                <constraint firstItem="cI7-Ou-nQG" firstAttribute="top" secondItem="psI-wk-n7o" secondAttribute="top" id="qkp-Ki-GvZ"/>
                 <constraint firstItem="psI-wk-n7o" firstAttribute="bottom" secondItem="TqS-sC-nj0" secondAttribute="bottom" id="sxL-be-4zI"/>
+                <constraint firstItem="lk4-ge-WFr" firstAttribute="top" secondItem="psI-wk-n7o" secondAttribute="top" id="xV1-4E-PZz"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="133"/>
+            <point key="canvasLocation" x="132" y="132.68365817091455"/>
         </view>
     </objects>
     <resources>

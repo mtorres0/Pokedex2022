@@ -13,14 +13,18 @@ import UIKit
 class PokedexViewController: UIViewController, PokedexViewProtocol {
 
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var presenter: PokedexPresenterProtocol?
 
     var totalPage = 1
     var currentPage = 0
+    var isSearchModeOn = false
     
 	override func viewDidLoad() {
         super.viewDidLoad()
         title = "Pokedex"
+        searchBar.delegate = self
         setupCollectionView()
         setCollectionLayout(pokemonCollectionView)
     }
@@ -54,23 +58,44 @@ class PokedexViewController: UIViewController, PokedexViewProtocol {
 
 extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        presenter?.pokemons.count ?? 0
+        presenter?.pokemonsFiltered.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCollectionViewCell", for: indexPath) as? PokemonCollectionViewCell,
-              let pokemon = presenter?.pokemons[indexPath.row] else { return UICollectionViewCell() }
-        let pokemonNumber = indexPath.row + 1
+              let pokemon = presenter?.pokemonsFiltered[indexPath.row],
+              let pokemonNumber = Int(pokemon.url.split(separator: "/").last ?? "0") else { return UICollectionViewCell() }
         cell.pokemonNameLabel.text = pokemon.name
         cell.pokemonImageView.loadImage(from: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(pokemonNumber).png"))
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let pokemonCount = presenter?.pokemons.count else { return }
-        if indexPath.row == (pokemonCount - 1) && currentPage < totalPage {
+        guard let pokemonCount = presenter?.pokemonsFiltered.count else { return }
+        if indexPath.row == (pokemonCount - 1) && currentPage < totalPage, !isSearchModeOn {
             currentPage += 1
             presenter?.getPokemons()
         }
+    }
+}
+
+extension PokedexViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        self.isSearchModeOn = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        self.isSearchModeOn = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.isSearchModeOn = searchText.count == 0 ? false: true
+        presenter?.searchPokemon(text: searchText)
     }
 }

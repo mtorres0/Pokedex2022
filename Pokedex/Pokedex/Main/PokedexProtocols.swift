@@ -17,9 +17,11 @@ protocol PokedexWireframeProtocol: AnyObject {
 //MARK: Presenter -
 protocol PokedexPresenterProtocol: AnyObject {
     var pokemons: [Pokemon] { get set }
+    var pokemonsFiltered: [Pokemon] { get set }
     
     func getPokemons()
     func showPokemons(pokemons: [Pokemon])
+    func searchPokemon(text: String)
 }
 
 //MARK: Interactor -
