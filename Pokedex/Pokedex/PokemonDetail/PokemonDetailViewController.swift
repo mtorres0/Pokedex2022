@@ -60,6 +60,7 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
     }
     
     func showPokemonInfo() {
+        title = presenter?.pokemon?.name?.capitalized
         nameLabel.text = presenter?.pokemon?.name?.capitalized
         numberLabel.text = String(format: "#%03d", pokemonId)
         pokemonImageView.loadImage(from: URL(string: presenter?.pokemon?.sprites?.frontDefault ?? ""))
@@ -75,6 +76,7 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
 }
 
 extension PokemonDetailViewController: TypeDelegate {
-    func selectType() {
+    func selectPokemonType(_ type: PokemonType) {
+        presenter?.goToTypePokemon(type)
     }
 }

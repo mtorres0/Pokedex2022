@@ -11,6 +11,7 @@
 import UIKit
 
 class PokemonDetailPresenter: PokemonDetailPresenterProtocol {
+    
     var pokemon: PokemonDetail? = nil
     
     
@@ -31,5 +32,9 @@ class PokemonDetailPresenter: PokemonDetailPresenterProtocol {
     func showPokemonInfo(pokemon: PokemonDetail) {
         self.pokemon = pokemon
         view?.showPokemonInfo()
+    }
+    
+    func goToTypePokemon(_ type: PokemonType) {
+        router.goToTypePokemon(type)
     }
 }

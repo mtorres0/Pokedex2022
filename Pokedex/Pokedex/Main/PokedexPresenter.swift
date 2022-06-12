@@ -58,4 +58,7 @@ class PokedexPresenter: PokedexPresenterProtocol {
         router.goToPokemonDetail(id: id)
     }
 
+    func getPokemonByType(url: String) {
+        interactor?.getPokemonByType(url: url)
+    }
 }

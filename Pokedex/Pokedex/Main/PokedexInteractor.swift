@@ -28,4 +28,21 @@ class PokedexInteractor: PokedexInteractorProtocol {
             print("the error \(error)")
         }
     }
+    
+    func getPokemonByType(url: String) {
+        guard let typeUrl = URL(string: url) else { return }
+        let request = URLRequest(url: typeUrl)
+        PokedexClient.shared.fetch(with: request, completion: handlePokedexTypeResults(result:))
+    }
+    
+    private func handlePokedexTypeResults(result: Result<PokemonTypeResults, APIError>) {
+        switch result {
+        case .success(let pokemonTypeResult):
+            guard let pokemonSlots = pokemonTypeResult.pokemon else { return }
+            let pokemonList = pokemonSlots.map { $0.pokemon }
+            presenter?.showPokemons(pokemons: pokemonList)
+        case .failure(let error):
+            print("the error \(error)")
+        }
+    }
 }

@@ -20,7 +20,8 @@ class TypesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        guard let pokemonType = types[indexPath.row].type else { return }
+        delegate?.selectPokemonType(pokemonType)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

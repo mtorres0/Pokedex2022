@@ -12,7 +12,7 @@ import Foundation
 
 //MARK: Wireframe -
 protocol PokemonDetailWireframeProtocol: AnyObject {
-    
+    func goToTypePokemon(_ type: PokemonType)
 }
 //MARK: Presenter -
 protocol PokemonDetailPresenterProtocol: AnyObject {
@@ -20,6 +20,7 @@ protocol PokemonDetailPresenterProtocol: AnyObject {
     
     func getPokemonInfo(id: Int)
     func showPokemonInfo(pokemon: PokemonDetail)
+    func goToTypePokemon(_ type: PokemonType)
 }
 
 //MARK: Interactor -

@@ -16,6 +16,9 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var presenter: PokedexPresenterProtocol?
+    
+    var pokemonType: PokemonType? = nil
+    var isTypeFilterOn: Bool = false
 
     var totalPage = 1
     var currentPage = 0
@@ -31,7 +34,13 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter?.getPokemons()
+        if let type = pokemonType {
+            title = type.name?.capitalized
+            isTypeFilterOn = true
+            presenter?.getPokemonByType(url: type.url ?? "")
+        } else {
+            presenter?.getPokemons()
+        }
         setupSearchBar()
     }
     
@@ -71,13 +80,13 @@ extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDel
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCollectionViewCell", for: indexPath) as? PokemonCollectionViewCell,
               let pokemon = presenter?.pokemonsFiltered[indexPath.row],
               let pokemonNumber = Int(pokemon.url.split(separator: "/").last ?? "0") else { return UICollectionViewCell() }
-        cell.pokemonNameLabel.text = pokemon.name
+        cell.pokemonNameLabel.text = pokemon.name.capitalized
         cell.pokemonImageView.loadImage(from: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(pokemonNumber).png"))
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let pokemonCount = presenter?.pokemonsFiltered.count else { return }
+        guard let pokemonCount = presenter?.pokemonsFiltered.count, !isTypeFilterOn else { return }
         if indexPath.row == (pokemonCount - 1) && currentPage < totalPage, !isSearchModeOn {
             currentPage += 1
             presenter?.getPokemons()

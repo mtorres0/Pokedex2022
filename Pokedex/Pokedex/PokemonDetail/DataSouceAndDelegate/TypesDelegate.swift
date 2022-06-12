@@ -8,5 +8,5 @@
 import Foundation
 
 protocol TypeDelegate: AnyObject {
-    func selectType()
+    func selectPokemonType(_ type: PokemonType)
 }

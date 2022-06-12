@@ -23,6 +23,7 @@ protocol PokedexPresenterProtocol: AnyObject {
     func showPokemons(pokemons: [Pokemon])
     func searchPokemon(text: String)
     func goToPokemonDetail(index: Int)
+    func getPokemonByType(url: String)
 }
 
 //MARK: Interactor -
@@ -31,6 +32,7 @@ protocol PokedexInteractorProtocol: AnyObject {
     var presenter: PokedexPresenterProtocol?  { get set }
     
     func getPokemons(offset: Int, limit: Int)
+    func getPokemonByType(url: String)
 }
 
 //MARK: View -

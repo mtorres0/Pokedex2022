@@ -30,5 +30,8 @@ class PokemonDetailRouter: PokemonDetailWireframeProtocol {
         return view
     }
     
-    
+    func goToTypePokemon(_ type: PokemonType) {
+        let pokemonSearchView = PokedexRouter.createModule(type: type)
+        viewController?.navigationController?.pushViewController(pokemonSearchView, animated: true)
+    }
 }
