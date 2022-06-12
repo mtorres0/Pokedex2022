@@ -26,14 +26,14 @@ extension APIClient {
             }
             
             let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             do {
                 let result = try decoder.decode(T.self, from: data)
                 DispatchQueue.main.async {
                     completion(Result.success(result))
                 }
-            } catch {
+            } catch let error as NSError {
+                debugPrint("Parser Json Error \(error.localizedDescription)")
                 DispatchQueue.main.async {
                     completion(Result.failure(.jsonParsingFailure))
                 }

@@ -27,4 +27,9 @@ class PokedexRouter: PokedexWireframeProtocol {
         
         return view
     }
+    
+    func goToPokemonDetail(id: Int) {
+        let pokemonDetail = PokemonDetailRouter.createModule(id: id)
+        viewController?.navigationController?.pushViewController(pokemonDetail, animated: true)
+    }
 }

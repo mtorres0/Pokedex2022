@@ -12,7 +12,7 @@ import Foundation
 
 //MARK: Wireframe -
 protocol PokedexWireframeProtocol: AnyObject {
-
+    func goToPokemonDetail(id: Int)
 }
 //MARK: Presenter -
 protocol PokedexPresenterProtocol: AnyObject {
@@ -22,6 +22,7 @@ protocol PokedexPresenterProtocol: AnyObject {
     func getPokemons()
     func showPokemons(pokemons: [Pokemon])
     func searchPokemon(text: String)
+    func goToPokemonDetail(index: Int)
 }
 
 //MARK: Interactor -

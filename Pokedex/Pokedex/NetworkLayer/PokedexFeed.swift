@@ -9,6 +9,7 @@ import Foundation
 
 enum PokedexFeed {
     case pokemonList(Int, Int)
+    case pokemonDetail(Int)
 }
 extension PokedexFeed: Endpoint {
     var base: String {
@@ -18,6 +19,7 @@ extension PokedexFeed: Endpoint {
     var path: String {
         switch self {
         case .pokemonList: return "/api/v2/pokemon"
+        case .pokemonDetail(let id): return "/api/v2/pokemon/\(id)"
         }
     }
     
@@ -29,6 +31,7 @@ extension PokedexFeed: Endpoint {
         case .pokemonList(let offset, let limit):
             queryItems.append(URLQueryItem(name: "offset", value: "\(offset)"))
             queryItems.append(URLQueryItem(name: "limit", value: "\(limit)"))
+        default: break
         }
         components.queryItems = queryItems
         return components

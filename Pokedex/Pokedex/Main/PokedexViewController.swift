@@ -77,6 +77,10 @@ extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDel
             presenter?.getPokemons()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.goToPokemonDetail(index: indexPath.row)
+    }
 }
 
 extension PokedexViewController: UISearchBarDelegate {

@@ -46,5 +46,10 @@ class PokedexPresenter: PokedexPresenterProtocol {
         }
         view?.showPokemons()
     }
+    
+    func goToPokemonDetail(index: Int) {
+        let id = Int(pokemonsFiltered[index].url.split(separator: "/").last ?? "0") ?? 0
+        router.goToPokemonDetail(id: id)
+    }
 
 }
