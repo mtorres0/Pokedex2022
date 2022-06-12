@@ -18,6 +18,7 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var typesCollectionView: UICollectionView!
     @IBOutlet weak var statsTableView: UITableView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var presenter: PokemonDetailPresenterProtocol?
     
@@ -33,6 +34,7 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
         containerView.layer.cornerRadius = 40
         setupCollectionView()
         setupTableView()
+        spinner.startAnimating()
         presenter?.getPokemonInfo(id: pokemonId)
     }
     
@@ -60,6 +62,8 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
     }
     
     func showPokemonInfo() {
+        spinner.stopAnimating()
+        spinner.isHidden = true
         title = presenter?.pokemon?.name?.capitalized
         nameLabel.text = presenter?.pokemon?.name?.capitalized
         numberLabel.text = String(format: "#%03d", pokemonId)
@@ -73,6 +77,14 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
         statsTableView.reloadData()
     }
 
+    func showErrorMessage() {
+        let alert = UIAlertController(title: "Error", message: "No se pudieron obtener los datos.", preferredStyle: .alert)
+        let button = UIAlertAction(title: "Aceptar", style: .cancel) { action in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(button)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension PokemonDetailViewController: TypeDelegate {

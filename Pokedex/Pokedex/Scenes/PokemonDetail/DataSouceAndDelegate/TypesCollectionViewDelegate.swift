@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TypesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+final class TypesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     weak var delegate: TypeDelegate?
     let types: [PokemonTypes]

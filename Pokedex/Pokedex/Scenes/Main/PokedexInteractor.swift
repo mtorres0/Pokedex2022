@@ -24,8 +24,8 @@ class PokedexInteractor: PokedexInteractorProtocol {
         case .success(let pokedex):
             guard let pokemonList = pokedex.results else { return }
             presenter?.showPokemons(pokemons: pokemonList)
-        case .failure(let error):
-            print("the error \(error)")
+        case .failure:
+            presenter?.showErrorMessage()
         }
     }
     
@@ -41,8 +41,8 @@ class PokedexInteractor: PokedexInteractorProtocol {
             guard let pokemonSlots = pokemonTypeResult.pokemon else { return }
             let pokemonList = pokemonSlots.map { $0.pokemon }
             presenter?.showPokemons(pokemons: pokemonList)
-        case .failure(let error):
-            print("the error \(error)")
+        case .failure:
+            presenter?.showErrorMessage()
         }
     }
 }

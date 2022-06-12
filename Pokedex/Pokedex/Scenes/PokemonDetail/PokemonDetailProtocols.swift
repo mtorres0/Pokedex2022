@@ -21,6 +21,7 @@ protocol PokemonDetailPresenterProtocol: AnyObject {
     func getPokemonInfo(id: Int)
     func showPokemonInfo(pokemon: PokemonDetail)
     func goToTypePokemon(_ type: PokemonType)
+    func showErrorMessage()
 }
 
 //MARK: Interactor -
@@ -35,4 +36,5 @@ protocol PokemonDetailViewProtocol: AnyObject {
 
     var presenter: PokemonDetailPresenterProtocol?  { get set }
     func showPokemonInfo()
+    func showErrorMessage()
 }

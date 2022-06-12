@@ -69,6 +69,14 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
         totalPage = pokemonCount / 20
     }
 
+    func showErrorMessage() {
+        let alert = UIAlertController(title: "Error", message: "No se pudieron obtener los datos.", preferredStyle: .alert)
+        let button = UIAlertAction(title: "Aceptar", style: .cancel) { action in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(button)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDelegate {

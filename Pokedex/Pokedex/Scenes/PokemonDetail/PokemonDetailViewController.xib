@@ -14,6 +14,7 @@
                 <outlet property="nameLabel" destination="1VR-pV-zZg" id="iak-nA-X0a"/>
                 <outlet property="numberLabel" destination="Gsq-lj-Xg5" id="8W1-BX-nji"/>
                 <outlet property="pokemonImageView" destination="SV5-wh-4mD" id="FtY-PF-Oin"/>
+                <outlet property="spinner" destination="p4Z-M9-3qv" id="6Of-Wi-YnB"/>
                 <outlet property="statsTableView" destination="Ipc-q4-lok" id="KkS-Jf-Hz7"/>
                 <outlet property="typesCollectionView" destination="BZj-fj-zha" id="6q6-Ph-ELH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -37,6 +38,9 @@
                             <rect key="frame" x="20" y="90" width="335" height="369"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="p4Z-M9-3qv">
+                            <rect key="frame" x="169" y="6" width="37" height="37"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,6 +51,8 @@
                         <constraint firstAttribute="trailing" secondItem="O2S-Ew-uc4" secondAttribute="trailing" constant="20" id="PNH-H9-61L"/>
                         <constraint firstAttribute="trailing" secondItem="Ipc-q4-lok" secondAttribute="trailing" constant="20" symbolic="YES" id="PZD-qc-xCx"/>
                         <constraint firstItem="O2S-Ew-uc4" firstAttribute="top" secondItem="IKx-yc-md8" secondAttribute="top" constant="40" id="ReA-8i-fs2"/>
+                        <constraint firstItem="p4Z-M9-3qv" firstAttribute="centerX" secondItem="IKx-yc-md8" secondAttribute="centerX" id="WU2-f5-aFB"/>
+                        <constraint firstItem="p4Z-M9-3qv" firstAttribute="top" secondItem="IKx-yc-md8" secondAttribute="top" constant="6" id="cjL-Dl-xVy"/>
                         <constraint firstItem="Ipc-q4-lok" firstAttribute="leading" secondItem="IKx-yc-md8" secondAttribute="leading" constant="20" symbolic="YES" id="kxT-Yc-x6r"/>
                     </constraints>
                 </view>

@@ -61,4 +61,8 @@ class PokedexPresenter: PokedexPresenterProtocol {
     func getPokemonByType(url: String) {
         interactor?.getPokemonByType(url: url)
     }
+    
+    func showErrorMessage() {
+        view?.showErrorMessage()
+    }
 }

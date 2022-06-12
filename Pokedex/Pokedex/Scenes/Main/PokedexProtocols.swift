@@ -24,6 +24,7 @@ protocol PokedexPresenterProtocol: AnyObject {
     func searchPokemon(text: String)
     func goToPokemonDetail(index: Int)
     func getPokemonByType(url: String)
+    func showErrorMessage()
 }
 
 //MARK: Interactor -
@@ -41,4 +42,5 @@ protocol PokedexViewProtocol: AnyObject {
   var presenter: PokedexPresenterProtocol?  { get set }
     
     func showPokemons()
+    func showErrorMessage()
 }

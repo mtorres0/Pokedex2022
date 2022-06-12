@@ -37,4 +37,8 @@ class PokemonDetailPresenter: PokemonDetailPresenterProtocol {
     func goToTypePokemon(_ type: PokemonType) {
         router.goToTypePokemon(type)
     }
+    
+    func showErrorMessage() {
+        view?.showErrorMessage()
+    }
 }

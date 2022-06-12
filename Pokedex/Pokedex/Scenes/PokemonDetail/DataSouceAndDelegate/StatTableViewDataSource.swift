@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StatTableViewDataSource: NSObject, UITableViewDataSource  {
+final class StatTableViewDataSource: NSObject, UITableViewDataSource  {
     let stats: [PokemonStats]
     
     init(stats: [PokemonStats]) {

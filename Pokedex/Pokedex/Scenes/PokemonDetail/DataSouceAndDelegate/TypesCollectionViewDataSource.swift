@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TypesCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+final class TypesCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     var types = [PokemonTypes]()
     
     init(types: [PokemonTypes]) {
