@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = UINavigationController(rootViewController: PokedexRouter.createModule())
         self.window = window
         window.makeKeyAndVisible()
+        window.tintColor = .white
     }
 }
 

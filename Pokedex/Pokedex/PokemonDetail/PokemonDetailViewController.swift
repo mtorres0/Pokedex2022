@@ -44,7 +44,7 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
     
     func showPokemonInfo() {
         nameLabel.text = presenter?.pokemon?.name?.capitalized
-        numberLabel.text = "\(pokemonId)"
+        numberLabel.text = String(format: "#%03d", pokemonId)
         pokemonImageView.loadImage(from: URL(string: presenter?.pokemon?.sprites?.frontDefault ?? ""))
         setupDataSourceAndDelegate()
         typesCollectionView.reloadData()
