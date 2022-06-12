@@ -15,7 +15,6 @@
 		89689ED4285652230002A2A2 /* PokemonTypeResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89689ED3285652230002A2A2 /* PokemonTypeResults.swift */; };
 		898CB71D28550054008C8B47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898CB71C28550054008C8B47 /* AppDelegate.swift */; };
 		898CB71F28550054008C8B47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898CB71E28550054008C8B47 /* SceneDelegate.swift */; };
-		898CB72428550054008C8B47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898CB72228550054008C8B47 /* Main.storyboard */; };
 		898CB72628550056008C8B47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 898CB72528550056008C8B47 /* Assets.xcassets */; };
 		898CB72928550056008C8B47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898CB72728550056008C8B47 /* LaunchScreen.storyboard */; };
 		898CB73428550057008C8B47 /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898CB73328550057008C8B47 /* PokedexTests.swift */; };
@@ -100,7 +99,6 @@
 		898CB71928550054008C8B47 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		898CB71C28550054008C8B47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		898CB71E28550054008C8B47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		898CB72328550054008C8B47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		898CB72528550056008C8B47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		898CB72828550056008C8B47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		898CB72A28550056008C8B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -164,6 +162,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89689ED528565B210002A2A2 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				898CB74C285500BB008C8B47 /* Main */,
+				898CB77C28555C96008C8B47 /* PokemonDetail */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		898CB71028550054008C8B47 = {
 			isa = PBXGroup;
 			children = (
@@ -191,11 +198,9 @@
 				898CB774285506CC008C8B47 /* Extensions */,
 				898CB7692855038C008C8B47 /* Model */,
 				898CB759285501D6008C8B47 /* NetworkLayer */,
-				898CB74C285500BB008C8B47 /* Main */,
-				898CB77C28555C96008C8B47 /* PokemonDetail */,
+				89689ED528565B210002A2A2 /* Scenes */,
 				898CB71C28550054008C8B47 /* AppDelegate.swift */,
 				898CB71E28550054008C8B47 /* SceneDelegate.swift */,
-				898CB72228550054008C8B47 /* Main.storyboard */,
 				898CB72528550056008C8B47 /* Assets.xcassets */,
 				898CB72728550056008C8B47 /* LaunchScreen.storyboard */,
 				898CB72A28550056008C8B47 /* Info.plist */,
@@ -430,7 +435,6 @@
 				898CB72628550056008C8B47 /* Assets.xcassets in Resources */,
 				898CB772285503F3008C8B47 /* PokemonCollectionViewCell.xib in Resources */,
 				89689ED0285638A80002A2A2 /* StatTableViewCell.xib in Resources */,
-				898CB72428550054008C8B47 /* Main.storyboard in Resources */,
 				898CB78D28555D04008C8B47 /* PokemonDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,14 +549,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		898CB72228550054008C8B47 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				898CB72328550054008C8B47 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		898CB72728550056008C8B47 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
