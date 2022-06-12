@@ -10,7 +10,7 @@
 
 import UIKit
 
-class PokedexViewController: UIViewController, PokedexViewProtocol {
+final class PokedexViewController: UIViewController, PokedexViewProtocol {
 
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -32,9 +32,15 @@ class PokedexViewController: UIViewController, PokedexViewProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter?.getPokemons()
+        setupSearchBar()
     }
     
-    func setupCollectionView() {
+    private func setupSearchBar() {
+        searchBar.text = ""
+        searchBar.tintColor = .blue
+    }
+    
+    private func setupCollectionView() {
         pokemonCollectionView.dataSource = self
         pokemonCollectionView.delegate = self
         pokemonCollectionView.register(UINib(nibName: "PokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCollectionViewCell")

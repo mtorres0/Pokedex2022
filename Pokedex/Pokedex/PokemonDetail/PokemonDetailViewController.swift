@@ -17,11 +17,14 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var typesCollectionView: UICollectionView!
+    @IBOutlet weak var statsTableView: UITableView!
     
     var presenter: PokemonDetailPresenterProtocol?
     
     var collectionViewDataSource: TypesCollectionViewDataSource?
     var collectionViewDelegate: TypesCollectionViewDelegate?
+    
+    var tableViewDataSource: StatTableViewDataSource?
     
     var pokemonId: Int = 0
 
@@ -29,6 +32,7 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
         super.viewDidLoad()
         containerView.layer.cornerRadius = 40
         setupCollectionView()
+        setupTableView()
         presenter?.getPokemonInfo(id: pokemonId)
     }
     
@@ -44,6 +48,17 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
         typesCollectionView.delegate = collectionViewDelegate
     }
     
+    private func setupTableView() {
+        statsTableView.register(UINib(nibName: "StatTableViewCell", bundle: nil), forCellReuseIdentifier: "StatTableViewCell")
+        setupDataSourceAndDelegate()
+    }
+    
+    private func setupTableViewDataSourceAndDelegate() {
+        guard let stats = presenter?.pokemon?.stats else { return }
+        tableViewDataSource = StatTableViewDataSource(stats: stats)
+        statsTableView.dataSource = tableViewDataSource
+    }
+    
     func showPokemonInfo() {
         nameLabel.text = presenter?.pokemon?.name?.capitalized
         numberLabel.text = String(format: "#%03d", pokemonId)
@@ -53,6 +68,8 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
         }
         setupDataSourceAndDelegate()
         typesCollectionView.reloadData()
+        setupTableViewDataSourceAndDelegate()
+        statsTableView.reloadData()
     }
 
 }

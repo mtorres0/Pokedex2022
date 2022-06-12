@@ -14,6 +14,7 @@
                 <outlet property="nameLabel" destination="1VR-pV-zZg" id="iak-nA-X0a"/>
                 <outlet property="numberLabel" destination="Gsq-lj-Xg5" id="8W1-BX-nji"/>
                 <outlet property="pokemonImageView" destination="SV5-wh-4mD" id="FtY-PF-Oin"/>
+                <outlet property="statsTableView" destination="Ipc-q4-lok" id="KkS-Jf-Hz7"/>
                 <outlet property="typesCollectionView" destination="BZj-fj-zha" id="6q6-Ph-ELH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,8 +26,29 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IKx-yc-md8">
                     <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2S-Ew-uc4">
+                            <rect key="frame" x="30" y="40" width="325" height="30"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ipc-q4-lok">
+                            <rect key="frame" x="20" y="90" width="335" height="369"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="O2S-Ew-uc4" firstAttribute="leading" secondItem="IKx-yc-md8" secondAttribute="leading" constant="30" id="00X-nt-SAL"/>
+                        <constraint firstItem="Ipc-q4-lok" firstAttribute="top" secondItem="O2S-Ew-uc4" secondAttribute="bottom" constant="20" id="2GZ-R8-QOW"/>
+                        <constraint firstAttribute="bottom" secondItem="Ipc-q4-lok" secondAttribute="bottom" constant="8" id="EfH-47-Hid"/>
+                        <constraint firstAttribute="trailing" secondItem="O2S-Ew-uc4" secondAttribute="trailing" constant="20" id="PNH-H9-61L"/>
+                        <constraint firstAttribute="trailing" secondItem="Ipc-q4-lok" secondAttribute="trailing" constant="20" symbolic="YES" id="PZD-qc-xCx"/>
+                        <constraint firstItem="O2S-Ew-uc4" firstAttribute="top" secondItem="IKx-yc-md8" secondAttribute="top" constant="40" id="ReA-8i-fs2"/>
+                        <constraint firstItem="Ipc-q4-lok" firstAttribute="leading" secondItem="IKx-yc-md8" secondAttribute="leading" constant="20" symbolic="YES" id="kxT-Yc-x6r"/>
+                    </constraints>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SV5-wh-4mD">
                     <rect key="frame" x="16" y="20" width="160" height="160"/>

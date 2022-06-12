@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		89689ECA2856317F0002A2A2 /* TypeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89689EC92856317F0002A2A2 /* TypeColor.swift */; };
 		89689ECC285632A60002A2A2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89689ECB285632A60002A2A2 /* UIColorExtension.swift */; };
+		89689ECF285638A80002A2A2 /* StatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89689ECD285638A80002A2A2 /* StatTableViewCell.swift */; };
+		89689ED0285638A80002A2A2 /* StatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89689ECE285638A80002A2A2 /* StatTableViewCell.xib */; };
+		89689ED2285639FB0002A2A2 /* StatTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89689ED1285639FB0002A2A2 /* StatTableViewDataSource.swift */; };
 		898CB71D28550054008C8B47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898CB71C28550054008C8B47 /* AppDelegate.swift */; };
 		898CB71F28550054008C8B47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898CB71E28550054008C8B47 /* SceneDelegate.swift */; };
 		898CB72428550054008C8B47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898CB72228550054008C8B47 /* Main.storyboard */; };
@@ -89,6 +92,9 @@
 /* Begin PBXFileReference section */
 		89689EC92856317F0002A2A2 /* TypeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeColor.swift; sourceTree = "<group>"; };
 		89689ECB285632A60002A2A2 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		89689ECD285638A80002A2A2 /* StatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTableViewCell.swift; sourceTree = "<group>"; };
+		89689ECE285638A80002A2A2 /* StatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatTableViewCell.xib; sourceTree = "<group>"; };
+		89689ED1285639FB0002A2A2 /* StatTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTableViewDataSource.swift; sourceTree = "<group>"; };
 		898CB71928550054008C8B47 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		898CB71C28550054008C8B47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		898CB71E28550054008C8B47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -294,6 +300,8 @@
 			children = (
 				898CB7932855B471008C8B47 /* PokemonTypeCollectionViewCell.swift */,
 				898CB7942855B471008C8B47 /* PokemonTypeCollectionViewCell.xib */,
+				89689ECD285638A80002A2A2 /* StatTableViewCell.swift */,
+				89689ECE285638A80002A2A2 /* StatTableViewCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -304,6 +312,7 @@
 				898CB79A2855B6F7008C8B47 /* TypesCollectionViewDataSource.swift */,
 				898CB79D2855B70A008C8B47 /* TypesCollectionViewDelegate.swift */,
 				898CB7A02855B81E008C8B47 /* TypesDelegate.swift */,
+				89689ED1285639FB0002A2A2 /* StatTableViewDataSource.swift */,
 			);
 			path = DataSouceAndDelegate;
 			sourceTree = "<group>";
@@ -417,6 +426,7 @@
 				898CB758285500D8008C8B47 /* PokedexViewController.xib in Resources */,
 				898CB72628550056008C8B47 /* Assets.xcassets in Resources */,
 				898CB772285503F3008C8B47 /* PokemonCollectionViewCell.xib in Resources */,
+				89689ED0285638A80002A2A2 /* StatTableViewCell.xib in Resources */,
 				898CB72428550054008C8B47 /* Main.storyboard in Resources */,
 				898CB78D28555D04008C8B47 /* PokemonDetailViewController.xib in Resources */,
 			);
@@ -446,8 +456,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89689ED2285639FB0002A2A2 /* StatTableViewDataSource.swift in Sources */,
 				898CB7902855606E008C8B47 /* PokemonDetail.swift in Sources */,
 				898CB765285501EC008C8B47 /* ApiClient.swift in Sources */,
+				89689ECF285638A80002A2A2 /* StatTableViewCell.swift in Sources */,
 				898CB756285500D8008C8B47 /* PokedexProtocols.swift in Sources */,
 				898CB761285501EB008C8B47 /* Endpoint.swift in Sources */,
 				898CB78528555D04008C8B47 /* PokemonDetailRouter.swift in Sources */,
