@@ -41,9 +41,14 @@ class PokedexPresenter: PokedexPresenterProtocol {
             self.pokemonsFiltered.removeAll()
             self.pokemonsFiltered.append(contentsOf: self.pokemons)
         } else {
-            self.pokemonsFiltered = self.pokemons.filter({ pokemon in
-                pokemon.name.lowercased().contains(text.lowercased())
-            })
+            if let pokemonNumber = Int(text), (pokemonNumber - 1) < self.pokemons.count && (pokemonNumber - 1) >= 0 {
+                self.pokemonsFiltered.removeAll()
+                self.pokemonsFiltered.append(self.pokemons[pokemonNumber - 1])
+            } else {
+                self.pokemonsFiltered = self.pokemons.filter({ pokemon in
+                    pokemon.name.lowercased().contains(text.lowercased())
+                })
+            }
         }
         view?.showPokemons()
     }
