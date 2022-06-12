@@ -15,6 +15,8 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    let refreshControl = UIRefreshControl()
+    
     var presenter: PokedexPresenterProtocol?
     
     var pokemonType: PokemonType? = nil
@@ -27,13 +29,17 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
 	override func viewDidLoad() {
         super.viewDidLoad()
         title = "Pokedex"
-        searchBar.delegate = self
+        setupSearchBar()
         setupCollectionView()
         setCollectionLayout(pokemonCollectionView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getPokemons()
+    }
+    
+    private func getPokemons() {
         if let type = pokemonType {
             title = type.name?.capitalized
             isTypeFilterOn = true
@@ -41,10 +47,10 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
         } else {
             presenter?.getPokemons()
         }
-        setupSearchBar()
     }
     
     private func setupSearchBar() {
+        searchBar.delegate = self
         searchBar.text = ""
         searchBar.tintColor = .blue
     }
@@ -54,6 +60,13 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
         pokemonCollectionView.delegate = self
         pokemonCollectionView.register(UINib(nibName: "PokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCollectionViewCell")
         pokemonCollectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        refreshControl.attributedTitle = NSAttributedString(string: "Desliza para refrescar")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        pokemonCollectionView.addSubview(refreshControl)
+    }
+    
+    @objc private func refresh(_ sender: AnyObject) {
+        getPokemons()
     }
     
     public func setCollectionLayout(_ collectionView: UICollectionView) {
@@ -64,12 +77,14 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
     }
     
     func showPokemons() {
+        refreshControl.endRefreshing()
         pokemonCollectionView.reloadData()
         let pokemonCount = presenter?.pokemons.count ?? 0
         totalPage = pokemonCount / 20
     }
 
     func showErrorMessage() {
+        refreshControl.endRefreshing()
         let alert = UIAlertController(title: "Error", message: "No se pudieron obtener los datos.", preferredStyle: .alert)
         let button = UIAlertAction(title: "Aceptar", style: .cancel) { action in
             alert.dismiss(animated: true, completion: nil)
