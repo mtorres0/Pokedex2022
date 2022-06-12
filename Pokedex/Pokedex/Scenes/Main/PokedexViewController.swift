@@ -15,8 +15,6 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    let refreshControl = UIRefreshControl()
-    
     var presenter: PokedexPresenterProtocol?
     
     var pokemonType: PokemonType? = nil
