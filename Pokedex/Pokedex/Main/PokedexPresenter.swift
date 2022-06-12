@@ -31,6 +31,7 @@ class PokedexPresenter: PokedexPresenterProtocol {
     
     func showPokemons(pokemons: [Pokemon]) {
         self.pokemons.append(contentsOf: pokemons)
+        self.pokemonsFiltered.removeAll()
         self.pokemonsFiltered.append(contentsOf: self.pokemons)
         view?.showPokemons()
     }
