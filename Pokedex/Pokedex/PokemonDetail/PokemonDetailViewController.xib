@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PokemonDetailViewController" customModule="Pokedex" customModuleProvider="target">
             <connections>
+                <outlet property="containerView" destination="IKx-yc-md8" id="HZp-d5-QJy"/>
                 <outlet property="nameLabel" destination="1VR-pV-zZg" id="iak-nA-X0a"/>
                 <outlet property="numberLabel" destination="Gsq-lj-Xg5" id="8W1-BX-nji"/>
                 <outlet property="pokemonImageView" destination="SV5-wh-4mD" id="FtY-PF-Oin"/>
@@ -61,7 +62,7 @@
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="FkX-HN-XbI"/>
-            <color key="backgroundColor" systemColor="systemBrownColor"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="SV5-wh-4mD" firstAttribute="leading" secondItem="FkX-HN-XbI" secondAttribute="leading" constant="16" id="0lh-2P-JTB"/>
                 <constraint firstItem="IKx-yc-md8" firstAttribute="top" secondItem="SV5-wh-4mD" secondAttribute="bottom" constant="20" id="1fD-C1-xvo"/>
@@ -85,9 +86,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

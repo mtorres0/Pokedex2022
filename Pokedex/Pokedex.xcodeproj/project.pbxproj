@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89689ECA2856317F0002A2A2 /* TypeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89689EC92856317F0002A2A2 /* TypeColor.swift */; };
+		89689ECC285632A60002A2A2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89689ECB285632A60002A2A2 /* UIColorExtension.swift */; };
 		898CB71D28550054008C8B47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898CB71C28550054008C8B47 /* AppDelegate.swift */; };
 		898CB71F28550054008C8B47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898CB71E28550054008C8B47 /* SceneDelegate.swift */; };
 		898CB72428550054008C8B47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898CB72228550054008C8B47 /* Main.storyboard */; };
@@ -85,6 +87,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89689EC92856317F0002A2A2 /* TypeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeColor.swift; sourceTree = "<group>"; };
+		89689ECB285632A60002A2A2 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		898CB71928550054008C8B47 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		898CB71C28550054008C8B47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		898CB71E28550054008C8B47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				898CB776285506EB008C8B47 /* UIImageViewExtension.swift */,
+				89689ECB285632A60002A2A2 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				898CB77928550709008C8B47 /* ImageStore.swift */,
+				89689EC92856317F0002A2A2 /* TypeColor.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -453,7 +459,9 @@
 				898CB755285500D8008C8B47 /* PokedexViewController.swift in Sources */,
 				898CB7952855B471008C8B47 /* PokemonTypeCollectionViewCell.swift in Sources */,
 				898CB7A12855B81E008C8B47 /* TypesDelegate.swift in Sources */,
+				89689ECA2856317F0002A2A2 /* TypeColor.swift in Sources */,
 				898CB76B2855039A008C8B47 /* PokedexResult.swift in Sources */,
+				89689ECC285632A60002A2A2 /* UIColorExtension.swift in Sources */,
 				898CB757285500D8008C8B47 /* PokedexInteractor.swift in Sources */,
 				898CB75F285501EB008C8B47 /* ApiError.swift in Sources */,
 				898CB763285501EB008C8B47 /* PokedexClient.swift in Sources */,

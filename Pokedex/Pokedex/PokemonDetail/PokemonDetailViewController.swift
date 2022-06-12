@@ -15,6 +15,7 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
     @IBOutlet weak var pokemonImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var typesCollectionView: UICollectionView!
     
     var presenter: PokemonDetailPresenterProtocol?
@@ -26,6 +27,7 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
 
 	override func viewDidLoad() {
         super.viewDidLoad()
+        containerView.layer.cornerRadius = 40
         setupCollectionView()
         presenter?.getPokemonInfo(id: pokemonId)
     }
@@ -46,6 +48,9 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
         nameLabel.text = presenter?.pokemon?.name?.capitalized
         numberLabel.text = String(format: "#%03d", pokemonId)
         pokemonImageView.loadImage(from: URL(string: presenter?.pokemon?.sprites?.frontDefault ?? ""))
+        if let type = presenter?.pokemon?.types?.first?.type?.name, let typeColor = TypeColor(rawValue: type) {
+            view.backgroundColor = typeColor.color
+        }
         setupDataSourceAndDelegate()
         typesCollectionView.reloadData()
     }
