@@ -26,7 +26,7 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
     
 	override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Pokedex"
+        title = "Pokédex"
         setupSearchBar()
         setupCollectionView()
         setCollectionLayout(pokemonCollectionView)

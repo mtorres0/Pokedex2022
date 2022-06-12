@@ -78,9 +78,10 @@ final class PokemonDetailViewController: UIViewController, PokemonDetailViewProt
     }
 
     func showErrorMessage() {
+        spinner.stopAnimating()
         let alert = UIAlertController(title: "Error", message: "No se pudieron obtener los datos.", preferredStyle: .alert)
         let button = UIAlertAction(title: "Aceptar", style: .cancel) { action in
-            alert.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
         }
         alert.addAction(button)
         self.present(alert, animated: true, completion: nil)

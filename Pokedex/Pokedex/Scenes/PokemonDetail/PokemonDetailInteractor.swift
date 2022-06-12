@@ -23,8 +23,8 @@ class PokemonDetailInteractor: PokemonDetailInteractorProtocol {
         switch result {
         case .success(let pokemon):
             presenter?.showPokemonInfo(pokemon: pokemon)
-        case .failure(let error):
-            print("the error \(error)")
+        case .failure:
+            presenter?.showErrorMessage()
         }
     }
 }
