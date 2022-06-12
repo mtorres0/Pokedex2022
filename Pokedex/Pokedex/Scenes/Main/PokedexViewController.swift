@@ -27,13 +27,13 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
 	override func viewDidLoad() {
         super.viewDidLoad()
         title = "Pokédex"
-        setupSearchBar()
         setupCollectionView()
         setCollectionLayout(pokemonCollectionView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupSearchBar()
         getPokemons()
     }
     
@@ -117,7 +117,7 @@ extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDel
 
 extension PokedexViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
+        searchBar.showsCancelButton = false
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
