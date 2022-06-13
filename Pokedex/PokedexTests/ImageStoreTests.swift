@@ -8,7 +8,7 @@
 import XCTest
 @testable import Pokedex
 
-class ImageStoreTests: XCTestCase {
+final class ImageStoreTests: XCTestCase {
 
     func testSaveImageCache() {
         ImageStore.save(UIImage(), forKey: "demo")
