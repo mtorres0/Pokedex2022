@@ -8,7 +8,7 @@
 import XCTest
 @testable import Pokedex
 
-class PokemonListApiTests: XCTestCase {
+final class PokemonListApiTests: XCTestCase {
 
     private var request: URLRequest!
     

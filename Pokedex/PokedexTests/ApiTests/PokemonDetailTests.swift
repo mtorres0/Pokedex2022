@@ -8,7 +8,7 @@
 import XCTest
 @testable import Pokedex
 
-class PokemonDetailTests: XCTestCase {
+final class PokemonDetailTests: XCTestCase {
 
     private var request: URLRequest!
     private var pokemonId: Int = 6 // id for charizard

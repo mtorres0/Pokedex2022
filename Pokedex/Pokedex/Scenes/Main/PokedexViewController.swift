@@ -19,6 +19,8 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
     
     var pokemonType: PokemonType? = nil
     var isTypeFilterOn: Bool = false
+    
+    var pokedexDataSource: PokedexCollectionViewDataSource?
 
     var totalPage = 1
     var currentPage = 0
@@ -54,7 +56,8 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
     }
     
     private func setupCollectionView() {
-        pokemonCollectionView.dataSource = self
+        pokedexDataSource = PokedexCollectionViewDataSource(pokemons: presenter?.pokemonsFiltered ?? [])
+        pokemonCollectionView.dataSource = pokedexDataSource
         pokemonCollectionView.delegate = self
         pokemonCollectionView.register(UINib(nibName: "PokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCollectionViewCell")
         pokemonCollectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
@@ -64,10 +67,11 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout ?? UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width/2 - 16
         layout.itemSize = CGSize(width: width , height: width)
-        collectionView.reloadData()
     }
     
     func showPokemons() {
+        pokedexDataSource = PokedexCollectionViewDataSource(pokemons: presenter?.pokemonsFiltered ?? [])
+        pokemonCollectionView.dataSource = pokedexDataSource
         pokemonCollectionView.reloadData()
         let pokemonCount = presenter?.pokemons.count ?? 0
         totalPage = pokemonCount / 20
@@ -88,20 +92,8 @@ final class PokedexViewController: UIViewController, PokedexViewProtocol {
     }
 }
 
-extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        presenter?.pokemonsFiltered.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCollectionViewCell", for: indexPath) as? PokemonCollectionViewCell,
-              let pokemon = presenter?.pokemonsFiltered[indexPath.row],
-              let pokemonNumber = Int(pokemon.url.split(separator: "/").last ?? "0") else { return UICollectionViewCell() }
-        cell.pokemonNameLabel.text = pokemon.name.capitalized
-        cell.pokemonImageView.loadImage(from: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(pokemonNumber).png"))
-        return cell
-    }
-    
+extension PokedexViewController: UICollectionViewDelegate {
+
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let pokemonCount = presenter?.pokemonsFiltered.count, !isTypeFilterOn else { return }
         if indexPath.row == (pokemonCount - 1) && currentPage < totalPage, !isSearchModeOn {

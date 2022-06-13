@@ -33,7 +33,9 @@ extension PokedexFeed: Endpoint {
             queryItems.append(URLQueryItem(name: "limit", value: "\(limit)"))
         default: break
         }
-        components.queryItems = queryItems
+        if queryItems.count > 0 {
+            components.queryItems = queryItems
+        }
         return components
     }
     
